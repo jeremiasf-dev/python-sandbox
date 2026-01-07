@@ -1,21 +1,65 @@
-# !! Nota: No funciona como quiero porque es necesario utilizar funciones. Hago commit de todas formas.
-
 # Me propongo a realizar un checklist de tareas (aún sin persistencia) utilizando listas.
-
-# Variable para verificar si lo ingresado es la opción de salida (-1)
-ingreso = ""
-
-# Varibles para: 1) Ingresar la tarea. 2) Verificar el estado (False: Incompleta, True: Completa)
-# Estas variables serán luego pasadas a una lista dentro de la lista.
-
-tarea = ""
-estado = False
+# Por hacer: Que funcione la función mostrar_tareas (Se queda en el loop y aún no permite la eliminación de tareas.) 
+# Variables
 
 # Lista dinámica
 lista_tareas = []
 
-while ingreso != "*":
+# Funciones
 
+#########################################################
+def limpiar_pantalla():
+    import os
+    os.system("clear")
+#########################################################
+
+#########################################################
+def agregar_tarea():
+    salida = False
+    while not salida:        
+        limpiar_pantalla()
+        print("Ingrese tarea o presione '*' para salir.")
+        tarea = input(">> ")
+        if tarea == "*":
+            salida = True
+        else:
+            lista_tareas.append(tarea)
+#########################################################
+
+
+#########################################################
+def mostrar_tareas():
+    
+    contador = 0
+    salida = False
+
+    while not salida:    
+        limpiar_pantalla()
+
+        print("Lista de tareas: ")
+
+        for tarea in lista_tareas:
+            contador += 1
+            print(contador, ") ", tarea)
+
+        print("Seleccione una opción:")
+        print("1) Eliminar tarea.")
+        print("*) Volver al menú.")
+        print(">> " , end="")
+
+        ingreso = input
+        if ingreso == "1":
+            print("WIP")
+        elif ingreso == "*":
+            salida = True
+        else:
+            print("Opción inválida.")
+#########################################################
+
+
+#########################################################
+def menu_opciones():
+    limpiar_pantalla()
     print("Gestor de tareas.")
     print("Menú de opciones.")
     print(" 1) Agregar tarea.")
@@ -25,20 +69,25 @@ while ingreso != "*":
 
     ingreso = input()
     if ingreso == "*":
-        break
+        return True
     elif ingreso == "1":
-        while ingreso != "*":
-            print("Ingrese la tarea o presione '*' para salir.")
-            ingreso = input(">> ")
-            
-            if ingreso == "*":
-                break
-            else:
-                tarea = ingreso
-                estado = False
-                lista_tareas.append([tarea, estado])
+        agregar_tarea()
     elif ingreso == "2":
-        for i in lista_tareas:
-            print(lista_tareas[i])
+        #mostrar_tareas()
+        print("WIP")
     else:
-        print("Ingreso inválido, por favor, ingrese una opción válida.")
+        print("Error. Ingrese una opción válida.")
+
+    return False
+#########################################################
+
+
+# Comienzo del programa
+
+# Inicialización de variables
+salida = False
+
+# Cuerpo del programa
+
+while not salida:
+    salida = menu_opciones()
