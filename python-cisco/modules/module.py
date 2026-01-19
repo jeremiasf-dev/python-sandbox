@@ -4,7 +4,7 @@
 # Para ss.oo Unix, indica al SO como ejecutar el contenido del archivo,
 # en otras palabras, qué programa debe ejecutarse para interpretar el texto (en este caso python3)
 
-"" module.py - un ejemplo sobre un módulo de python ""
+""" module.py - un ejemplo sobre un módulo de python """
 # La cadena superior colocada antes de las instrucciones, se denomina
 # "doc-string" y debe explicar brevemente el prósito y el contenido del módulo..
 
@@ -18,7 +18,7 @@ def suml(the_list): # Suma los elementos de una lista
 		the_sum += element
 	return the_sum
 
-def prodl(the_list) # Multiplica los elementos de una lista
+def prodl(the_list): # Multiplica los elementos de una lista
 	global __counter
 	__counter += 1
 	prod = 1
